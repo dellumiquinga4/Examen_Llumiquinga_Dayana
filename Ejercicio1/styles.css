@@ -1,0 +1,19 @@
+/* Estilos para el componente */
+saludo-component {
+    font-family: 'Arial', sans-serif;
+    background-color: #9579E7 ;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 200px;
+    margin: 20px;
+  }
+  
+  /* Estilos para el contenido encapsulado dentro del Shadow DOM */
+  saludo-component p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  

@@ -1,0 +1,15 @@
+.container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* Ajusta la altura según tus necesidades */
+    background-color: #EE0EE3; /* Color de fondo */
+    margin-block-start: 2%;
+    border: 5px solid rgb(0, 255, 55);
+  }
+
+.container h2 {
+font-family: 'Arial', sans-serif;
+color: #333; /* Cambia el color del texto según tus preferencias */
+}

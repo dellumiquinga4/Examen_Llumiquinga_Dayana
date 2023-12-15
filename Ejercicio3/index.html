@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  
+  <template id="container-template">
+    <div id="container">
+      <div id="header-container">
+        <slot name="header"></slot>
+      </div>
+      <div id="formulario">
+        <slot name="formulario"></slot>
+      </div>
+      <div id="cube-container">
+        <slot name="cube"></slot>
+      </div>
+    </div>
+  </template>
+
+  <!-- Componente 1: Header -->
+  <template id="header-template">
+    <div id="header">Composición de Componentes</div>
+  </template>
+
+  <!-- Componente 2: Formulario -->
+  <template id="formulario-template">
+    <form id="miFormulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <button type="button" onclick="mostrarContenido()">Enviar</button>
+    </form>
+    <div id="resultado"></div>
+  </template>
+
+  <!-- Componente 3: Cubo -->
+  <template id="cube-template">
+    <div id="cube"></div>
+  </template>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Obtener el contenedor template
+      const containerTemplate = document.getElementById('container-template');
+      const containerClone = document.importNode(containerTemplate.content, true);
+
+      // Obtener los otros componentes
+      const headerTemplate = document.getElementById('header-template');
+      const formularioTemplate = document.getElementById('formulario-template');
+      const cubeTemplate = document.getElementById('cube-template');
+
+      // Clonar los componentes y añadirlos al contenedor utilizando slots
+      const headerClone = document.importNode(headerTemplate.content, true);
+      const formularioClone = document.importNode(formularioTemplate.content, true);
+      const cubeClone = document.importNode(cubeTemplate.content, true);
+
+      containerClone.querySelector('[name="header"]').appendChild(headerClone);
+      containerClone.querySelector('[name="formulario"]').appendChild(formularioClone);
+      
+      // Añadir el contenedor al body
+      document.body.appendChild(containerClone);
+    });
+
+    // Función para mostrar el contenido del formulario
+    function mostrarContenido() {
+      const nombre = document.getElementById("nombre").value;
+      const email = document.getElementById("email").value;
+      const resultado = document.getElementById("resultado");
+
+      // Mostrar el contenido en la parte inferior del formulario
+      resultado.innerHTML = `<p>Nombre: ${nombre}</p><p>Email: ${email}</p>`;
+
+      // Borrar el resultado después de 5 segundos
+      setTimeout(function () {
+        resultado.innerHTML = '';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

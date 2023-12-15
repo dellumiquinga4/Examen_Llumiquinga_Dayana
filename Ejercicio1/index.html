@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saludo Component</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<script>
+  class SaludoComponent extends HTMLElement {
+    constructor() {
+      super();
+
+      // Crear un Shadow DOM
+      const shadowRoot = this.attachShadow({ mode: 'open' });
+
+      // Crear un elemento de párrafo y establecer el contenido del saludo
+      const p = document.createElement('p');
+      p.textContent = '¡Hola, Mundo!';
+
+      // Agregar el párrafo al Shadow DOM
+      shadowRoot.appendChild(p);
+    }
+  }
+
+  // Definir el nuevo elemento personalizado
+  customElements.define('saludo-component', SaludoComponent);
+</script>
+
+<!-- Utilizar el nuevo componente -->
+<saludo-component></saludo-component>
+
+</body>
+</html>
